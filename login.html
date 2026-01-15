@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/97ebdf5864.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- Tagline always at top on mobile -->
+    
     <div class="hero-tagline">
         <h1>Smart Search For<br><span>Local Services</span></h1>
     </div>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="forms-container">
-            <!-- LOGIN FORM -->
+           
             <div id="login-form" class="form active">
                 <h2>Login</h2>
                 <form id="loginForm">
@@ -44,7 +44,7 @@
                 </form>
             </div>
 
-            <!-- REGISTER FORM -->
+            
             <div id="register-form" class="form">
                 <h2>Register</h2>
                 <form id="registerForm">
@@ -80,7 +80,7 @@
     document.querySelectorAll('#guestLogin').forEach(link => {
         link.addEventListener('click', (e) => {
         e.preventDefault();
-        // Save guest user
+        
         localStorage.setItem('cerco_current_user', JSON.stringify({
         name: "Guest",
         email: "*",
