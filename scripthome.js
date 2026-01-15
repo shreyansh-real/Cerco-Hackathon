@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-// UI Elements
+
 const menuToggle = document.getElementById('menuToggle');
 const sidebar = document.getElementById('sidebar');
 const viewAllBtn = document.getElementById('viewAllBtn');
@@ -16,7 +16,7 @@ const filterDropdown = document.getElementById('filterDropdown');
 const sortDropdown = document.getElementById('sortDropdown');
 
 
-// === Profile Dropdown & Modals ===
+//profile
 const openAccount = document.getElementById('openAccount');
 const openSettings = document.getElementById('openSettings');
 const logoutBtn = document.getElementById('logoutBtn');
@@ -24,7 +24,8 @@ const settingsModal = document.getElementById('settingsModal');
 const accountModal = document.getElementById('accountModal');
 const closeSettingsModal = document.getElementById('closeSettingsModal');
 const closeAccountModal = document.getElementById('closeAccountModal');
-// Toggle sidebar on mobile
+
+//sidebar
 if (menuToggle) {
 menuToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
 }
@@ -36,7 +37,7 @@ sidebar.classList.contains('active')) {
 sidebar.classList.remove('active');
 }
 });
-// Modals
+
 viewAllBtn?.addEventListener('click', (e) => {
 e.preventDefault();
 offersModal.style.display = 'block';
@@ -52,7 +53,7 @@ if (e.target === categoryModal) categoryModal.style.display = 'none';
 if (e.target === settingsModal) settingsModal.style.display = 'none';
 if (e.target === accountModal) accountModal.style.display = 'none';
 });
-// Dropdowns
+
 filterBtn?.addEventListener('click', () => {
 filterDropdown.style.display = filterDropdown.style.display === 'block' ? 'none' : 'block';
 });
@@ -63,17 +64,18 @@ document.addEventListener('click', (e) => {
 if (!filterBtn?.contains(e.target) && !filterDropdown?.contains(e.target)) filterDropdown.style.display = 'none';
 if (!sortBtn?.contains(e.target) && !sortDropdown?.contains(e.target)) sortDropdown.style.display = 'none';
 });
-// Account action
+
 openAccount?.addEventListener('click', (e) => {
 e.preventDefault();
 accountModal.style.display = 'block';
 });
-// Settings action
+
 openSettings?.addEventListener('click', (e) => {
 e.preventDefault();
 settingsModal.style.display = 'block';
 });
-// Logout action
+
+  
 logoutBtn?.addEventListener('click', (e) => {
 e.preventDefault();
 if (confirm('Are you sure you want to log out?')) {
@@ -81,12 +83,14 @@ localStorage.removeItem('userToken');
 window.location.href = 'login.html';
 }
 });
-// === SETTINGS FUNCTIONALITY ===
+
+  //setting fun
 const notificationToggle = document.getElementById('notificationToggle');
 const languageSelect = document.getElementById('languageSelect');
 const themeToggle = document.getElementById('themeToggle');
 const themeLabel = document.getElementById('themeLabel');
-// Load saved settings
+
+  
 if (localStorage.getItem('notifications') !== null) {
 notificationToggle.checked = localStorage.getItem('notifications') === 'true';
 }
@@ -100,15 +104,18 @@ themeLabel.textContent = 'Dark Mode';
 } else {
 themeLabel.textContent = 'Light Mode';
 }
-// Save notification setting
+
+  
 notificationToggle.addEventListener('change', () => {
 localStorage.setItem('notifications', notificationToggle.checked);
 });
-// Save language setting
+
+  
 languageSelect.addEventListener('change', () => {
 localStorage.setItem('language', languageSelect.value);
 });
-// Theme toggle
+
+  
 themeToggle.addEventListener('change', () => {
 if (themeToggle.checked) {
 document.body.classList.add('dark-mode');
@@ -122,8 +129,8 @@ localStorage.setItem('darkMode', 'false');
 });
 
 
-
-// ===== OFFER DATA =====
+//offers
+  
 const offerData = [
 { title: "First-Time Customer Incentives", subtitle: "Special welcome deals!", promo: ["20% off first booking", "Free consultation"], products: ["🎁", "👋", "✨"], color: "#ff6b00" },
 { title: "Bundled & Value Packages", subtitle: "More services, lower price!", promo: ["AC + Pest Control @ ₹999", "Save up to 30%"], products: ["🧾", "🏠", "👨‍👩‍👧‍👦"], color: "#4a90e2" },
@@ -187,7 +194,7 @@ allOffersGrid.appendChild(card);
 
 
 
-// ===== SERVICE CATALOG =====
+//services
 const serviceCatalog = {
 "Home Cleaning": [
 { type: "basic", title: "Basic Home Cleaning", description: "Regular dusting, vacuuming, and surface wiping.", tasks: 350, projects: 3, progress: 72, provider: "Priya Sharma", rating: 4.8, experience: "3 years", price: 999, availability: "available", location: "Mumbai" },
@@ -264,8 +271,6 @@ const serviceCatalog = {
 };
 
 
-
-// Render services for a category
 function renderCategoryServices(categoryName) {
 const services = serviceCatalog[categoryName] || [];
 let currentFilters = {
@@ -349,7 +354,7 @@ card.innerHTML = `
 categoryServicesGrid.appendChild(card);
 });
 }
-// ===== FREQUENTLY USED SERVICES =====
+
 function getRandomServices(count = 6) {
 const allServices = [];
 for (const category in serviceCatalog) {
@@ -409,7 +414,7 @@ renderFrequentlyUsedServices();
 
 
 
-// ===== LIVE SEARCH FUNCTIONALITY (REPLACES OFFERS + CATEGORIES WITH RESULTS) =====
+//search
 const searchInput = document.getElementById('searchInput');
 const offersSection = document.querySelector('.offers-section');
 const categoriesSection = document.querySelector('.categories-section');
@@ -418,7 +423,6 @@ const searchResultsContainer = document.getElementById('searchResultsContainer')
 const searchServicesGrid = document.getElementById('searchServicesGrid');
 
 if (searchInput) {
-  // Flatten all services with category info
   const allServicesWithCategory = [];
   for (const [category, services] of Object.entries(serviceCatalog)) {
     services.forEach(service => {
@@ -430,7 +434,6 @@ if (searchInput) {
     const trimmedQuery = query.trim().toLowerCase();
 
     if (!trimmedQuery) {
-      // Restore original layout
       searchResultsContainer.style.display = 'none';
       offersSection.style.display = '';
       categoriesSection.style.display = '';
@@ -438,7 +441,7 @@ if (searchInput) {
       return;
     }
 
-    // Filter matching services
+
     const matches = allServicesWithCategory.filter(service =>
       service.title.toLowerCase().includes(trimmedQuery) ||
       service.description.toLowerCase().includes(trimmedQuery) ||
@@ -447,12 +450,10 @@ if (searchInput) {
       service.location.toLowerCase().includes(trimmedQuery)
     );
 
-    // Hide original sections
     offersSection.style.display = 'none';
     categoriesSection.style.display = 'none';
     frequentlyUsedSection.style.marginTop = '40px'; // reduce gap above Frequently Used
 
-    // Render results
     searchServicesGrid.innerHTML = '';
     if (matches.length === 0) {
       searchServicesGrid.innerHTML = `<p style="text-align:center; grid-column:1/-1; font-size:18px; color:#666;">No services found for "${query}"</p>`;
@@ -511,7 +512,6 @@ if (searchInput) {
   });
 }
 
-// === FEEDBACK MODAL WITH PROVIDER DETAILS ===
 const feedbackModal = document.getElementById('feedbackModal');
 const closeFeedbackModal = document.getElementById('closeFeedbackModal');
 const feedbackForm = document.getElementById('feedbackForm');
@@ -525,18 +525,13 @@ const resetFeedbackBtn = document.getElementById('resetFeedback');
 const starRatingContainer = document.getElementById('starRatingContainer');
 const userRatingInput = document.getElementById('userRating');
 
-// Store current service data when feedback is opened
 let currentFeedbackService = null;
 
-// Open modal on "Give Feedback" click with service context
 document.addEventListener('click', (e) => {
   if (e.target.classList.contains('feedback-btn')) {
-    // Traverse up to find the service card
     const card = e.target.closest('.service-card');
     if (!card) return;
 
-    // Extract service data from innerHTML or dataset (we'll embed it)
-    // Since data isn't stored as attributes, we parse it from DOM
     const providerName = card.querySelector('.provider-name')?.textContent || 'Unknown';
     const rating = card.querySelector('.provider-rating')?.textContent?.split(' ')[1] || '4.5';
     const experience = card.querySelector('.provider-rating')?.textContent?.split('·')[1]?.trim() || 'N/A';
@@ -545,14 +540,12 @@ document.addEventListener('click', (e) => {
 
     currentFeedbackService = { providerName, rating, experience, location, title };
 
-    // Update modal UI
     document.getElementById('feedbackProviderName').textContent = providerName;
     document.getElementById('feedbackProviderFullName').textContent = providerName;
     document.getElementById('feedbackProviderRating').textContent = rating;
     document.getElementById('feedbackProviderExp').textContent = experience;
     document.getElementById('feedbackProviderLocation').textContent = location;
 
-    // Generate 3 random mock past feedbacks
     const pastFeedbacks = [
       { user: "Rahul", rating: 5, comment: "Excellent work! Very professional." },
       { user: "Priya", rating: 4, comment: "Good service, but arrived late." },
@@ -569,7 +562,6 @@ document.addEventListener('click', (e) => {
       </div>
     `).join('');
 
-    // Reset form & rating
     feedbackForm.reset();
     titleCount.textContent = "0/32";
     descCount.textContent = "0/100";
@@ -583,7 +575,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Star rating interaction
 function updateStars(rating) {
   const stars = starRatingContainer.querySelectorAll('.star');
   stars.forEach((star, i) => {
@@ -611,7 +602,6 @@ starRatingContainer.addEventListener('mouseleave', () => {
   updateStars(currentRating);
 });
 
-// Close modal
 closeFeedbackModal?.addEventListener('click', () => {
   feedbackModal.style.display = 'none';
 });
@@ -619,7 +609,6 @@ window.addEventListener('click', (e) => {
   if (e.target === feedbackModal) feedbackModal.style.display = 'none';
 });
 
-// Real-time character count & validation (keep existing)
 feedbackTitle.addEventListener('input', () => {
   const len = feedbackTitle.value.length;
   titleCount.textContent = `${len}/32`;
@@ -653,7 +642,6 @@ resetFeedbackBtn?.addEventListener('click', () => {
   updateStars(5);
 });
 
-// Handle form submit
 feedbackForm?.addEventListener('submit', (e) => {
   e.preventDefault();
   const title = feedbackTitle.value.trim();
@@ -683,7 +671,6 @@ feedbackForm?.addEventListener('submit', (e) => {
 
   if (valid) {
     alert(`✅ Thank you for your feedback!\n\nProvider: ${currentFeedbackService.providerName}\nRating: ${rating}★\nSubject: ${title}\nComment: ${desc}`);
-    // In real app: send { provider, rating, title, desc } to backend
     feedbackModal.style.display = 'none';
     feedbackForm.reset();
     titleCount.textContent = "0/32";
@@ -691,7 +678,6 @@ feedbackForm?.addEventListener('submit', (e) => {
   }
 });
 
-// Category click handler
 document.querySelectorAll('.category-card').forEach(card => {
 card.addEventListener('click', () => {
 const category = card.dataset.category;
@@ -706,7 +692,6 @@ alert(`You selected: ${category}`);
 });
 
 
-// ===== LANGUAGE SWITCHING =====
 const translations = {
   en: {
     welcome: "𝕎𝕖𝕝𝕔𝕠𝕞𝕖 𝕋𝕠 ℂ𝕖𝕣𝕔𝕠 !",
@@ -790,7 +775,6 @@ function applyLanguage(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (translations[lang] && translations[lang][key] !== undefined) {
-      // Handle different element types safely
       if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
         el.placeholder = translations[lang][key];
       } else if (el.tagName === 'BUTTON' || el.tagName === 'A' || el.tagName === 'OPTION') {
@@ -801,7 +785,6 @@ function applyLanguage(lang) {
     }
   });
 
-  // Special: Update welcome message with user name
   const currentUser = JSON.parse(localStorage.getItem('cerco_current_user'));
   if (currentUser) {
     const welcomeText = translations[lang]?.welcome || "Welcome to Cerco!";
@@ -812,7 +795,6 @@ function applyLanguage(lang) {
   }
 }
 
-  // Update theme label based on current mode (since it uses dynamic text)
   const themeToggle = document.getElementById('themeToggle');
   const themeLabel = document.getElementById('themeLabel');
   if (themeLabel) {
@@ -826,12 +808,10 @@ function applyLanguage(lang) {
   }
 }
 
-// Load and apply saved language
 const savedLang = localStorage.getItem('language') || 'en';
 languageSelect.value = savedLang;
 applyLanguage(savedLang);
 
-// Listen for language change
 languageSelect.addEventListener('change', () => {
   const newLang = languageSelect.value;
   localStorage.setItem('language', newLang);
@@ -841,29 +821,24 @@ languageSelect.addEventListener('change', () => {
 
 });
 
-// === CONTACT MODAL ===
 const contactModal = document.getElementById('contactModal');
 const openContactModal = document.getElementById('openContactModal');
 const closeContactModal = document.getElementById('closeContactModal');
 const contactForm = document.getElementById('contactForm');
 
-// Open modal
 openContactModal?.addEventListener('click', (e) => {
   e.preventDefault();
   contactModal.style.display = 'block';
 });
 
-// Close modal
 closeContactModal?.addEventListener('click', () => {
   contactModal.style.display = 'none';
 });
 
-// Close if clicked outside
 window.addEventListener('click', (e) => {
   if (e.target === contactModal) contactModal.style.display = 'none';
 });
 
-// Form validation & submit
 contactForm?.addEventListener('submit', (e) => {
   e.preventDefault();
   let valid = true;
@@ -872,22 +847,18 @@ contactForm?.addEventListener('submit', (e) => {
   const phone = document.getElementById('userPhone').value.trim();
   const message = document.getElementById('userMessage').value.trim();
 
-  // Reset errors
   document.querySelectorAll('.error').forEach(el => el.textContent = '');
 
-  // Validate email
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     document.getElementById('emailError').textContent = "Please enter a valid Gmail.";
     valid = false;
   }
 
-  // Validate phone (basic)
   if (phone.length < 10) {
     document.getElementById('phoneError').textContent = "Enter a valid phone number.";
     valid = false;
   }
 
-  // Validate message
   if (message.length < 10) {
     document.getElementById('messageError').textContent = "Message must be at least 10 characters.";
     valid = false;
@@ -897,11 +868,9 @@ contactForm?.addEventListener('submit', (e) => {
     alert("✅ Thank you! Your message has been sent to the developer.");
     contactForm.reset();
     contactModal.style.display = 'none';
-    // In real app: send data via fetch()
   }
 });
 
-// Reset form
 document.getElementById('resetContactForm')?.addEventListener('click', () => {
   contactForm?.reset();
   document.querySelectorAll('.error').forEach(el => el.textContent = '');
