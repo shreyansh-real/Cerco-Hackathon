@@ -1,7 +1,6 @@
 🌐 Cerco – Service Discovery Platform
 Hackathon Project | Frontend Prototype | Team of 3
 
-Live Demo: https://lrlhjp75-5500.inc1.devtunnels.ms/
 A responsive, multilingual web platform for discovering local services — built entirely with HTML, CSS, and vanilla JavaScript.
 
 🎯 Overview
