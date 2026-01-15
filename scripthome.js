@@ -437,7 +437,7 @@ if (searchInput) {
       searchResultsContainer.style.display = 'none';
       offersSection.style.display = '';
       categoriesSection.style.display = '';
-      frequentlyUsedSection.style.marginTop = '100px'; // restore original spacing
+      frequentlyUsedSection.style.marginTop = '100px'; 
       return;
     }
 
@@ -452,7 +452,7 @@ if (searchInput) {
 
     offersSection.style.display = 'none';
     categoriesSection.style.display = 'none';
-    frequentlyUsedSection.style.marginTop = '40px'; // reduce gap above Frequently Used
+    frequentlyUsedSection.style.marginTop = '40px'; 
 
     searchServicesGrid.innerHTML = '';
     if (matches.length === 0) {
