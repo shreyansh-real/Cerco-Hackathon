@@ -18,7 +18,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ===== HERO TAGLINE (TOP ON MOBILE) ===== */
+
 .hero-tagline {
     text-align: center;
     margin: 20px 0 30px;
@@ -51,28 +51,28 @@ body {
     animation: glow 2s ease-in-out infinite alternate;
 }
 
-/* Reduce spacing in register form to fit "Guest" link */
+
 #register-form h2 {
-  margin-bottom: 20px; /* was 25px */
+  margin-bottom: 20px; 
 }
 
 #register-form .form-group {
-  margin: 15px; /* was 22px */
+  margin: 15px; 
 }
 
 #register-form p {
-  margin: 10px 0; /* was 12px */
+  margin: 10px 0;
 }
 
-/* Ensure container doesn't push content down too much */
+
 .container {
-  padding: 20px 20px; /* reduced top/bottom padding slightly */
+  padding: 20px 20px;
 }
 
-/* On mobile, tighten hero-tagline spacing */
+
 @media (max-width: 768px) {
   .hero-tagline {
-    margin-bottom: 20px; /* was 30px */
+    margin-bottom: 20px; 
   }
   .container {
     padding: 30px 40px;
@@ -103,7 +103,7 @@ body {
     }
 }
 
-/* ===== CONTAINER ===== */
+
 .container {
     width: 100%;
     max-width: 500px;
@@ -262,7 +262,7 @@ input[type="checkbox"] {
     box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3);
 }
 
-/* Desktop enhancement */
+
 @media (min-width: 768px) {
     body {
         justify-content: center;
