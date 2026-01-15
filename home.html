@@ -9,13 +9,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<!-- Mobile Top Bar -->
+
 <div class="topbar">
   <div class="logo">Cerco</div>
   <button class="menu-toggle" id="menuToggle">☰</button>
 </div>
 
-<!-- Sidebar -->
+
 <div class="sidebar" id="sidebar">
   <a href="#" class="logo-container">
     <div class="logo-icon"></div>
@@ -37,9 +37,9 @@
   </ul>
 </div>
 
-<!-- Main Content -->
+
 <div class="main">
-  <!-- Hero Section -->
+  
   <div class="hero-section">
     <h1 id="welcomeMessage"><b data-i18n="welcome">𝕎𝕖𝕝𝕔𝕠𝕞𝕖 𝕋𝕠 ℂ𝕖𝕣𝕔𝕠 !</b></h1>
     <div class="search-container">
@@ -48,13 +48,13 @@
       <div id="searchResults" class="search-results"></div>
     </div>
   </div>
-  <!-- Search Results Section (Initially Hidden) -->
+  
   <div id="searchResultsContainer" class="search-results-section" style="display:none; max-width:1200px; margin:40px auto;">
       <h2 class="search-results-title" style="font-size:28px; font-weight:800; color:#1a3d5c; margin-bottom:25px; text-align:center;">Search Results</h2>
       <div class="services-grid" id="searchServicesGrid"></div>
   </div>
 
-  <!-- Offers Section -->
+  
   <div class="offers-section">
     <div class="offers-header">
       <h2 class="offers-title"data-i18n="topOffers">🔥Top Offers</h2>
@@ -63,7 +63,7 @@
     <div class="single-offer-banner" id="homeOfferBanner"></div>
   </div>
 
-  <!-- Categories Section -->
+  
   <div class="categories-section">
     <h2 class="categories-title"data-i18n="browseCategories">Browse Categories</h2>
     <div class="categories-grid">
@@ -79,7 +79,7 @@
     </div>
   </div>
 
-  <!-- Frequently Used Services -->
+ 
   <div class="frequently-used-section">
     <div class="frequently-used-header">
       <h2 class="frequently-used-title">✨ Frequently Used Services</h2>
@@ -89,7 +89,7 @@
   </div>
 </div>
 
-<!-- Offers Modal -->
+
 <div id="offersModal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
@@ -100,7 +100,7 @@
   </div>
 </div>
 
-<!-- Category Modal -->
+
 <div id="categoryModal" class="home-cleaning-modal">
   <div class="home-cleaning-content">
     <div class="home-cleaning-header">
@@ -126,7 +126,7 @@
   </div>
 </div>
 
-<!-- Settings Modal -->
+
 <div id="settingsModal" class="modal">
   <div class="settings-content">
     <div class="settings-header">
@@ -160,7 +160,7 @@
   </div>
 </div>
 
-<!-- Account Modal -->
+
 <div id="accountModal" class="modal">
   <div class="account-content">
     <div class="account-header">
@@ -179,7 +179,7 @@
 <div class="account-info-item"><strong>Location:</strong> Mumbai, India</div>
 <div class="account-info-item"><strong>Active Bookings:</strong> 0</div>
 
-<!-- Hidden edit form (initially) -->
+
 <div id="editNameForm" style="display:none; margin-top:15px;">
   <input type="text" id="newNameInput" placeholder="Enter new name" value="${currentUser.name}" />
   <div style="margin-top:8px; display:flex; gap:8px;">
@@ -192,7 +192,7 @@
   </div>
 </div>
 
-<!-- Feedback Modal -->
+
 <div id="feedbackModal" class="modal">
   <div class="modal-content" style="max-width: 600px;">
     <div class="modal-header">
@@ -200,7 +200,7 @@
       <span class="close-modal" id="closeFeedbackModal">&times;</span>
     </div>
 
-    <!-- Provider Summary -->
+   
     <div class="feedback-provider-summary" style="background:#3a7b84; padding:14px; border-radius:10px; margin-bottom:20px; display:flex; gap:12px; align-items:center;">
       <div class="provider-avatar" style="width:40px; height:40px; border-radius:50%; background:#000000; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#555;">P</div>
       <div>
@@ -209,13 +209,13 @@
       </div>
     </div>
 
-    <!-- Past Feedbacks -->
+    
     <div class="past-feedbacks-section" style="margin-bottom:20px;">
       <h3 style="font-size:16px; margin-bottom:10px; color:#555;">Recent Feedbacks</h3>
       <div id="pastFeedbacksList" style="max-height:120px; overflow-y:auto; border-top:1px solid #eee; padding-top:8px;"></div>
     </div>
 
-    <!-- Rating -->
+    
     <div class="form-group">
       <label>Your Rating</label>
       <div class="star-rating" id="starRatingContainer">
@@ -228,7 +228,7 @@
       <input type="hidden" id="userRating" value="5" />
     </div>
 
-    <!-- Existing Feedback Form -->
+    
     <form id="feedbackForm">
       <div class="form-group">
         <label for="feedbackTitle">Subject</label>
@@ -250,10 +250,10 @@
   </div>
 </div>
 
-<!-- Footer -->
+
 <footer class="modern-footer" id="footer">
   <div class="footer-content">
-    <!-- Logo Section -->
+    
     <div class="footer-logo-section">
       <div class="footer-logo">
         <div class="logo-icon"></div>
@@ -262,9 +262,9 @@
       <p class="footer-slogan">Your Trusted Service Partner</p>
     </div>
 
-    <!-- Contact & Policy Sections -->
+   
     <div class="footer-columns">
-      <!-- Contact Section -->
+     
       <div class="footer-column contact-column">
         <h3>Contact Us</h3>
           <p style="margin: 8px 0; color: #cccccc; font-size: 15px;">
@@ -272,7 +272,7 @@
           </p>
           <button class="contact-btn" id="openContactModal">Get in Touch</button>
 
-        <!-- Social Media Icons -->
+       
         <div class="social-icons">
           <a href="https://www.instagram.com/not.real_shreyansh/" target="_blank" class="social-icon"><i class="fa fa-instagram"></i></a>
           <a href="https://www.facebook.com/profile.php?id=61584008213373" target="_blank" class="social-icon"><i class="fa fa-facebook-f"></i></a>
@@ -281,7 +281,7 @@
         </div>
       </div>  
 
-      <!-- Policies Section -->
+      
       <div class="footer-column policies-column">
         <h3>Legal</h3>
         <ul>
@@ -293,7 +293,7 @@
     </div>
   </div>
 
-  <!-- Footer Bottom -->
+  
   <div class="footer-bottom">
     <p>&copy; 2026 Cerco. All rights reserved.</p>
     <div class="footer-copyright">
@@ -302,7 +302,7 @@
   </div>
 </footer>
 
-<!-- Contact Modal -->
+
 <div id="contactModal" class="modal">
   <div class="contact-modal-content">
     <div class="contact-modal-header">
@@ -310,7 +310,7 @@
       <span class="close-modal" id="closeContactModal">&times;</span>
     </div>
     <div class="contact-modal-body">
-      <!-- Left: Logo + Info -->
+    
       <div class="contact-info">
         <div class="contact-logo">
           <div class="logo-icon"></div>
@@ -322,7 +322,7 @@
           <p><i class="fa fa-map-marker"></i> Mumbai, India</p>
         </div>
       </div>
-      <!-- Right: Form -->
+     
       <div class="contact-form">
         <form id="contactForm">
           <div class="form-group">
@@ -353,18 +353,18 @@
 <script src="scripthome.js"></script>
 
 <script>
-// Check if user is logged in
+
 const currentUser = JSON.parse(localStorage.getItem('cerco_current_user'));
 if (!currentUser) {
   alert("Please log in first.");
   window.location.href = "login.html";
 }
 
-// Update welcome message
+
 const welcomeEl = document.getElementById('welcomeMessage');
 welcomeEl.innerHTML = `<b>𝕎𝕖𝕝𝕔𝕠𝕞𝕖 𝕋𝕠 ℂ𝕖𝕣𝕔𝕠, ${currentUser.name}!</b>`;
 
-// Update account modal dynamically
+
 const accountDetails = document.querySelector('#accountModal .account-details');
 if (currentUser.isGuest) {
   accountDetails.innerHTML = `
@@ -402,7 +402,7 @@ if (currentUser.isGuest) {
     </div>
   `;
 
-  // === EDIT NAME FUNCTIONALITY (only for non-guest) ===
+ 
   const editNameBtn = document.getElementById('editNameBtn');
   const editNameForm = document.getElementById('editNameForm');
   const newNameInput = document.getElementById('newNameInput');
