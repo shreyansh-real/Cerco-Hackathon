@@ -1,21 +1,17 @@
-// Utility: Get all registered users
 function getRegisteredUsers() {
     const users = localStorage.getItem('cerco_users');
     return users ? JSON.parse(users) : [];
 }
 
-// Utility: Save users back to localStorage
 function saveRegisteredUsers(users) {
     localStorage.setItem('cerco_users', JSON.stringify(users));
 }
 
-// Utility: Get currently logged-in user
 function getCurrentUser() {
     const user = localStorage.getItem('cerco_current_user');
     return user ? JSON.parse(user) : null;
 }
 
-// Toggle forms
 document.getElementById('show-register').addEventListener('click', function(e) {
     e.preventDefault();
     document.getElementById('login-form').classList.remove('active');
@@ -33,7 +29,6 @@ function isValidEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-// LOGIN
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const email = this.querySelector('input[type="email"]').value.trim();
@@ -56,7 +51,6 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
-        // Save logged-in user
         localStorage.setItem('cerco_current_user', JSON.stringify({ name: user.name, email: user.email }));
         window.location.href = "home.html";
     } else {
@@ -64,7 +58,6 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     }
 });
 
-// REGISTER
 document.getElementById('registerForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const email = this.querySelector('input[type="email"]').value.trim();
@@ -99,7 +92,6 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
         return;
     }
 
-    // Save new user (plain text password — ONLY for demo!)
     users.push({ name: name.trim(), email, password: pass });
     saveRegisteredUsers(users);
 
